@@ -11,6 +11,13 @@
 - Hardware-accurate or cycle-exact C64 emulation.
 - Compatibility with arbitrary PSID/RSID files.
 
+## Promotion decisions
+
+- `sid_exporter.py` is superseded by the maintained SID-PRO export modules.
+- `vic_dma_original.py` is superseded by the maintained VIC-DMA model.
+- `sid_names.py`, `trace_recorder.py`, and `sid_dump.py` remain archival
+  diagnostics until they have a distinct, tested public API.
+
 ## Remediation required before promoting the reference code
 
 1. Repair the `vic_dma.py` syntax error.
