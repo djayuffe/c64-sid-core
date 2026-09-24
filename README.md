@@ -1,38 +1,57 @@
 # c64-sid-core
 
-An independently tracked reference snapshot of Python C64/SID core
-components: 6502 CPU handling, C64 memory banking, CIA and VIC-II helpers,
-SID chip logic, playback coordination, tracing, and SID-PRO export support.
+Reusable Python C64/SID emulation-core components: 6502 CPU handling, memory
+banking, CIA and VIC-II helpers, SID chip logic, timing, playback, capture,
+and analysis primitives. It is a focused library project; use
+[c64-sid-py](https://github.com/djayuffe/c64-sid-py) for end-user inspection,
+rendering, and export commands.
 
-## Status
+## Install
 
-This repository intentionally preserves the supplied component snapshot as
-source material. It is **not yet a supported, installable package or release
-artifact**. The source is kept in `reference/sid/` unchanged apart from
-excluding transient local files.
+```bash
+python3 -m pip install .
+```
 
-The initial import audit identified these blockers to standalone execution:
+The package has no runtime dependencies beyond the Python standard library.
 
-- `reference/sid/vic_dma.py` has an `IndentationError` at line 21.
-- Several modules expect a parent `logger` package that is absent from this
-  snapshot.
-- The snapshot has no packaging metadata, test suite, or runtime fixtures.
+## Supported API
 
-No release is published until those points are resolved and covered by tests.
+```python
+from pathlib import Path
+
+from c64sid_core import C64System, SidChip, parse_sid_header
+
+header, program = parse_sid_header(Path("music.sid").read_bytes())
+system = C64System()
+sid = SidChip(header.clockFreq)
+```
+
+The package exposes `C64System`, `Cpu6502`, `MachineTiming`, `SidChip`, and
+`parse_sid_header`. Lower-level CIA, VIC-II, memory, playback, SID-PRO, and
+analysis modules remain available under `c64sid_core` for advanced users.
+
+## Validation
+
+```bash
+python3 -m unittest discover -v
+ruff check src tests
+```
 
 ## Layout
 
 | Path | Purpose |
 | --- | --- |
-| `reference/sid/` | Original imported core-component snapshot |
-| `STATUS.md` | Scope and next remediation work |
+| `src/c64sid_core/` | Maintained standalone package |
+| `tests/` | Core import, parser, SID, and waveform-resource checks |
+| `reference/sid/` | Original imported snapshot retained for provenance |
+| `STATUS.md` | Reference snapshot remediation record |
 
 ## Intended direction
 
-The project can later become a standalone `c64sid_core` package once imports,
-logging, syntax, public API boundaries, tests, and packaging are established.
-Until then, use the maintained [c64-sid-py](https://github.com/djayuffe/c64-sid-py)
-project for runnable SID inspection, rendering, capture, analysis, and export.
+The maintained package is intentionally separated from the original snapshot.
+The reference tree still documents the incoming source and its historical
+limitations; it is not imported, packaged, or claimed as supported runtime
+code.
 
 ## License
 
