@@ -8,12 +8,12 @@ version = "0.1.0"
 description = "Reusable Python C64 and SID emulation-core components"
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "Proprietary - license not yet selected" }
+license = { text = "GPL-3.0-or-later" }
 keywords = ["c64", "cia", "commodore-64", "emulator", "sid", "vic-ii"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
-    "License :: Other/Proprietary License",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",

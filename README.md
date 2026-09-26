@@ -33,7 +33,7 @@ analysis modules remain available under `c64sid_core` for advanced users.
 ## Validation
 
 ```bash
-python3 -m unittest discover -v
+PYTHONPATH=src python3 -m unittest discover -s tests -v
 ruff check src tests
 ```
 
@@ -55,5 +55,5 @@ code.
 
 ## License
 
-No distribution license has been selected. Treat this source as
-all-rights-reserved unless the repository owner grants other permission.
+Copyright © 2026 Ulf Bertilsson. This project is licensed under the
+[GNU General Public License v3.0 or later](LICENSE).

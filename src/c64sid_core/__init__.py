@@ -1,4 +1,8 @@
-"""Reusable Python C64/SID emulation-core components."""
+"""Reusable Python C64/SID emulation-core components.
+
+Copyright (C) 2026 Ulf Bertilsson
+SPDX-License-Identifier: GPL-3.0-or-later
+"""
 
 from .sid_parser import parse_sid_header
 from .machine_timing import MachineTiming
